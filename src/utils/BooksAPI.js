@@ -7,6 +7,7 @@ if (!token)
     .toString(36)
     .substr(-8)
 
+// Headers to be added to every request sent to the server
 const headers = {
   Accept: 'application/json',
   Authorization: token,
