@@ -6,8 +6,8 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom'
-import Home from './Home'
-import Search from './Search'
+import Home from './home/Home'
+import Search from './search/Search'
 
 class App extends Component {
   state = {
