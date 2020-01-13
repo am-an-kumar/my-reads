@@ -1,5 +1,9 @@
 import React from 'react'
 
-const Header = () => <h1>My Reads</h1>
+const Header = () => (
+  <div className='list-books-title'>
+    <h1>My Reads</h1>
+  </div>
+)
 
 export default Header
