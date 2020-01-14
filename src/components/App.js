@@ -21,13 +21,21 @@ class App extends Component {
   // moves a book from one shelf to another(out of shelves)
   shelfChangeHandler = (currentBook, newShelf) => {
     this.setState(prevState => {
-      return {
-        [currentBook.shelf]: prevState[currentBook.shelf].filter(
-          book => book.id !== currentBook.id,
-        ),
-        [newShelf]: prevState[newShelf].concat([
-          Object.assign(currentBook, { shelf: newShelf }),
-        ]),
+      // if newShelf is "none", we simply need to remove the book, so not adding it to any shelf
+      const currentShelfState = prevState[currentBook.shelf].filter(
+        book => book.id !== currentBook.id,
+      )
+      if (newShelf === 'none') {
+        return {
+          [currentBook.shelf]: currentShelfState,
+        }
+      } else {
+        return {
+          [currentBook.shelf]: currentShelfState,
+          [newShelf]: prevState[newShelf].concat([
+            Object.assign(currentBook, { shelf: newShelf }),
+          ]),
+        }
       }
     })
   }
