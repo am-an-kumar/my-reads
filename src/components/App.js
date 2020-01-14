@@ -17,31 +17,29 @@ class App extends Component {
     wantToRead: [],
   }
 
-  setInitialShelfState = books => {
-    // making AJAX request to get all books in user's shelf
-    const currentlyReading = [],
-      wantToRead = [],
-      read = []
-    // filtering based on shelf data
-    for (const book of books) {
-      if (book.shelf === 'currentlyReading') {
-        currentlyReading.push(book)
-      } else if (book.shelf === 'read') {
-        read.push(book)
-      } else {
-        wantToRead.push(book)
-      }
-    }
-    this.setState({
-      currentlyReading,
-      read,
-      wantToRead,
-    })
-  }
-
   // will be called on initial mount, not on re-renders
   componentDidMount() {
-    getAll().then(this.setInitialShelfState)
+    getAll().then(books => {
+      // making AJAX request to get all books in user's shelf
+      const currentlyReading = [],
+        wantToRead = [],
+        read = []
+      // filtering based on shelf data
+      for (const book of books) {
+        if (book.shelf === 'currentlyReading') {
+          currentlyReading.push(book)
+        } else if (book.shelf === 'read') {
+          read.push(book)
+        } else {
+          wantToRead.push(book)
+        }
+      }
+      this.setState({
+        currentlyReading,
+        read,
+        wantToRead,
+      })
+    })
   }
 
   render() {
