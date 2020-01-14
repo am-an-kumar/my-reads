@@ -12,7 +12,11 @@ const SearchResults = ({ books, searchFieldEmpty, loading }) => {
       ) : books.length === 0 ? (
         <p>No match found</p>
       ) : (
-        books.map(book => <Book key={book.id} {...book} />)
+        <ol className='books-grid'>
+          {books.map(book => (
+            <Book key={book.id} {...book} />
+          ))}
+        </ol>
       )}
     </div>
   )
