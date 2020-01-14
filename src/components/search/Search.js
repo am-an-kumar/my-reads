@@ -9,6 +9,14 @@ class Search extends Component {
     books: [],
   }
 
+  // handler for clear button in search form
+  clearHandler = () => {
+    this.setState({
+      searchFieldValue: '',
+      books: [],
+    })
+  }
+
   inputChangeHandler = event => {
     // getting the value, triming spaces from start if any, and replacing multiple spaces with a single space
     let value = event.target.value
@@ -45,6 +53,7 @@ class Search extends Component {
         <SearchForm
           value={searchFieldValue}
           onChangeHandler={this.inputChangeHandler}
+          clearHandler={this.clearHandler}
         />
         <SearchResults books={books} />
       </div>

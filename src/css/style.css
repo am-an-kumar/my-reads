@@ -171,6 +171,7 @@ body {
   font-size: 1.25em;
   border: none;
   outline: none;
+  text-align: center;
 }
 
 .close-search {
@@ -186,6 +187,25 @@ body {
   font-size: 0;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+
+.clear-search {
+  display: block;
+  top: 20px;
+  left: 15px;
+  width: 36px;
+  height: 36px;
+  margin: auto;
+  background-image: url('../icons/clear_search.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  background-color: white;
+  font-size: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 button:active {
