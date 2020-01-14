@@ -28,7 +28,9 @@ const Book = ({ title, authors, imageLinks }) => (
         </div>
       </div>
       <div className='book-title'>{title}</div>
-      {/* <div className='book-authors'>{authors.join(', ')}</div> */}
+      <div className='book-authors'>
+        {authors ? authors.join(', ') : 'Author Unknown'}
+      </div>
     </div>
   </li>
 )
