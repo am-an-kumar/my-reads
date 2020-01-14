@@ -54,7 +54,7 @@ Book.propTypes = {
       smallThumbnail: PropTypes.string.isRequired,
       thumbnail: PropTypes.string.isRequired,
     }),
-    shelf: PropTypes.string.isRequired,
+    shelf: PropTypes.string,
   }),
   shelfChangeHandler: PropTypes.func.isRequired,
 }

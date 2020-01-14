@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import SearchForm from './SearchForm'
 import SearchResults from './SearchResults'
 import { search } from '../../utils/BooksAPI'
@@ -52,6 +53,7 @@ class Search extends Component {
 
   render() {
     const { searchFieldValue, books, loading } = this.state
+    const { shelfChangeHandler } = this.props
 
     return (
       <div className='search-books'>
@@ -64,10 +66,15 @@ class Search extends Component {
           books={books}
           searchFieldEmpty={searchFieldValue ? false : true}
           loading={loading}
+          shelfChangeHandler={shelfChangeHandler}
         />
       </div>
     )
   }
+}
+
+Search.propTypes = {
+  shelfChangeHandler: PropTypes.func.isRequired,
 }
 
 export default Search

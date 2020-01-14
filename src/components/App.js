@@ -85,7 +85,12 @@ class App extends Component {
               />
             )}
           />
-          <Route path='/search' component={Search} />
+          <Route
+            path='/search'
+            render={() => (
+              <Search shelfChangeHandler={this.shelfChangeHandler} />
+            )}
+          />
           <Redirect to='/' />
         </Switch>
       </Router>

@@ -2,7 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Book from '../shared/Book'
 
-const SearchResults = ({ books, searchFieldEmpty, loading }) => {
+const SearchResults = ({
+  books,
+  searchFieldEmpty,
+  loading,
+  shelfChangeHandler,
+}) => {
   return (
     <div className='search-books-results'>
       {searchFieldEmpty ? (
@@ -14,7 +19,11 @@ const SearchResults = ({ books, searchFieldEmpty, loading }) => {
       ) : (
         <ol className='books-grid'>
           {books.map(book => (
-            <Book key={book.id} {...book} />
+            <Book
+              key={book.id}
+              book={book}
+              shelfChangeHandler={shelfChangeHandler}
+            />
           ))}
         </ol>
       )}
@@ -26,6 +35,7 @@ SearchResults.propTypes = {
   books: PropTypes.array.isRequired,
   searchFieldEmpty: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
+  shelfChangeHandler: PropTypes.func.isRequired,
 }
 
 export default SearchResults

@@ -13,16 +13,19 @@ const headers = {
   Authorization: token,
 }
 
+// fetches details for a single book using id
 export const get = bookId =>
   fetch(`${api}/books/${bookId}`, { headers })
     .then(res => res.json())
     .then(data => data.book)
 
+// gets all books saved for a user, would list books in either "read", "currentlyReading" or "wantToRead" shelf, not the "none" shelf
 export const getAll = () =>
   fetch(`${api}/books`, { headers })
     .then(res => res.json())
     .then(data => data.books)
 
+// updates the shelf for a book
 export const update = (book, shelf) =>
   fetch(`${api}/books/${book.id}`, {
     method: 'PUT',
@@ -33,6 +36,7 @@ export const update = (book, shelf) =>
     body: JSON.stringify({ shelf }),
   }).then(res => res.json())
 
+// returns all books that match with the search query, books are fetched with "none" as shelf too
 export const search = query =>
   query
     ? fetch(`${api}/search`, {
