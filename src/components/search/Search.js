@@ -7,6 +7,7 @@ class Search extends Component {
   state = {
     searchFieldValue: '',
     books: [],
+    loading: false,
   }
 
   // handler for clear button in search form
@@ -14,6 +15,7 @@ class Search extends Component {
     this.setState({
       searchFieldValue: '',
       books: [],
+      loading: false,
     })
   }
 
@@ -26,6 +28,7 @@ class Search extends Component {
     // setting state to update the input field, can't wait for AJAX response before updating the input field
     this.setState({
       searchFieldValue: value,
+      loading: true,
     })
 
     // making AJAX request to fetch book
@@ -34,19 +37,21 @@ class Search extends Component {
       if (Array.isArray(books)) {
         this.setState({
           books,
+          loading: false,
         })
       }
       // if the response is an object indicating no matches found
       else {
         this.setState({
           books: [],
+          loading: false,
         })
       }
     })
   }
 
   render() {
-    const { searchFieldValue, books } = this.state
+    const { searchFieldValue, books, loading } = this.state
 
     return (
       <div className='search-books'>
@@ -55,7 +60,11 @@ class Search extends Component {
           onChangeHandler={this.inputChangeHandler}
           clearHandler={this.clearHandler}
         />
-        <SearchResults books={books} />
+        <SearchResults
+          books={books}
+          searchFieldEmpty={searchFieldValue ? false : true}
+          loading={loading}
+        />
       </div>
     )
   }
