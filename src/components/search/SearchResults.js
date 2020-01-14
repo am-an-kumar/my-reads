@@ -6,15 +6,9 @@ const SearchResults = ({ books }) => {
   return (
     <div className='search-books-results'>
       <ol className='books-grid'>
-        {books.length > 0
-          ? books.map(book => (
-              <li key={book.id}>
-                {`${book.title}; ${book.authors.join(', ')}; ${
-                  book.imageLinks ? book.imageLinks['thumbnail'] : null
-                }}`}
-              </li>
-            ))
-          : null}
+        {books.map(book => (
+          <Book key={book.id} {...book} />
+        ))}
       </ol>
     </div>
   )

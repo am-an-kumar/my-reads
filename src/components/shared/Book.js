@@ -10,9 +10,11 @@ const Book = ({ title, authors, imageLinks }) => (
           style={{
             width: 128,
             height: 193,
-            backgroundImage: `url(${imageLinks})`,
+            backgroundImage: `url(${imageLinks ? imageLinks.thumbnail : null})`,
           }}
-        ></div>
+        >
+          {imageLinks ? '' : 'No cover found'}
+        </div>
         <div className='book-shelf-changer'>
           <select>
             <option value='move' disabled>
@@ -26,7 +28,7 @@ const Book = ({ title, authors, imageLinks }) => (
         </div>
       </div>
       <div className='book-title'>{title}</div>
-      <div className='book-authors'>{authors.join(', ')}</div>
+      {/* <div className='book-authors'>{authors.join(', ')}</div> */}
     </div>
   </li>
 )
