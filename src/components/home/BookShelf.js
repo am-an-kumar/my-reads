@@ -9,6 +9,8 @@ const BookShelf = ({ heading, books, shelfChangeHandler, loading }) => (
     <div className='bookshelf-books'>
       {loading ? (
         <Loading />
+      ) : books.length === 0 ? (
+        <p>No books in here</p>
       ) : (
         <ol className='books-grid'>
           {books.map(book => (
