@@ -17,6 +17,19 @@ class App extends Component {
     wantToRead: [],
   }
 
+  shelfChangeHandler = (currentBook, newShelf) => {
+    this.setState(prevState => {
+      return {
+        [currentBook.shelf]: prevState[currentBook.shelf].filter(
+          book => book.id !== currentBook.id,
+        ),
+        [newShelf]: prevState[newShelf].concat([
+          Object.assign(currentBook, { shelf: newShelf }),
+        ]),
+      }
+    })
+  }
+
   // will be called on initial mount, not on re-renders
   componentDidMount() {
     getAll().then(books => {
@@ -56,6 +69,7 @@ class App extends Component {
                 currentlyReading={currentlyReading}
                 read={read}
                 wantToRead={wantToRead}
+                shelfChangeHandler={this.shelfChangeHandler}
               />
             )}
           />
