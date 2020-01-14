@@ -15,8 +15,10 @@ class App extends Component {
     currentlyReading: [],
     read: [],
     wantToRead: [],
+    loading: true,
   }
 
+  // moves a book from one shelf to another(out of shelves)
   shelfChangeHandler = (currentBook, newShelf) => {
     this.setState(prevState => {
       return {
@@ -51,12 +53,13 @@ class App extends Component {
         currentlyReading,
         read,
         wantToRead,
+        loading: false,
       })
     })
   }
 
   render() {
-    const { currentlyReading, read, wantToRead } = this.state
+    const { currentlyReading, read, wantToRead, loading } = this.state
 
     return (
       <Router basename='/'>
@@ -70,6 +73,7 @@ class App extends Component {
                 read={read}
                 wantToRead={wantToRead}
                 shelfChangeHandler={this.shelfChangeHandler}
+                loading={loading}
               />
             )}
           />

@@ -4,7 +4,13 @@ import Header from './Header'
 import BookStore from './BookStore'
 import AddBooksButton from './AddBooksButton'
 
-const Home = ({ read, currentlyReading, wantToRead, shelfChangeHandler }) => (
+const Home = ({
+  read,
+  currentlyReading,
+  wantToRead,
+  shelfChangeHandler,
+  loading,
+}) => (
   <div className='list-books'>
     <Header />
     <BookStore
@@ -12,6 +18,7 @@ const Home = ({ read, currentlyReading, wantToRead, shelfChangeHandler }) => (
       currentlyReading={currentlyReading}
       wantToRead={wantToRead}
       shelfChangeHandler={shelfChangeHandler}
+      loading={loading}
     />
     <AddBooksButton />
   </div>
@@ -22,6 +29,7 @@ Home.propTypes = {
   currentlyReading: PropTypes.array.isRequired,
   wantToRead: PropTypes.array.isRequired,
   shelfChangeHandler: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 }
 
 export default Home

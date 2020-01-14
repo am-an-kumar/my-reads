@@ -216,3 +216,15 @@ button:active {
 .search-books-results {
   padding: 80px 10px 20px;
 }
+
+/* loader */
+.loader {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-image: url('../icons/loader_circles.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: 0;
+}

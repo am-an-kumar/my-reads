@@ -24,6 +24,7 @@ const Book = props => {
           <div className='book-shelf-changer'>
             <select
               onChange={event => shelfChangeHandler(book, event.target.value)}
+              value={shelf || 'none'}
             >
               <option value='move' disabled>
                 Move to...

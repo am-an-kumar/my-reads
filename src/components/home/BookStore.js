@@ -7,6 +7,7 @@ const BookList = ({
   read,
   wantToRead,
   shelfChangeHandler,
+  loading,
 }) => (
   <div className='list-books-content'>
     <div>
@@ -14,16 +15,19 @@ const BookList = ({
         heading='Currently Reading'
         books={currentlyReading}
         shelfChangeHandler={shelfChangeHandler}
+        loading={loading}
       />
       <BookShelf
         heading='Read'
         books={read}
         shelfChangeHandler={shelfChangeHandler}
+        loading={loading}
       />
       <BookShelf
         heading='Want to Read'
         books={wantToRead}
         shelfChangeHandler={shelfChangeHandler}
+        loading={loading}
       />
     </div>
   </div>
@@ -35,6 +39,7 @@ BookList.propTypes = {
   read: PropTypes.array.isRequired,
   wantToRead: PropTypes.array.isRequired,
   shelfChangeHandler: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 }
 
 export default BookList
