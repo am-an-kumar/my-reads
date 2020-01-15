@@ -12,11 +12,11 @@ const SearchResults = ({
   return (
     <div className='search-books-results'>
       {searchFieldEmpty ? (
-        <p>Search for something</p>
+        <p className='info-message'>Search for something</p>
       ) : loading ? (
         <Loading />
       ) : books.length === 0 ? (
-        <p>No match found</p>
+        <p className='info-message'>No match found</p>
       ) : (
         <ol className='books-grid'>
           {books.map(book => (
