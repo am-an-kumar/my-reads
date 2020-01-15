@@ -255,3 +255,15 @@ button:active {
   background-position: center;
   outline: 0;
 }
+
+/* informative messages */
+.info-message {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2em;
+  text-transform: capitalize;
+  font-style: italic;
+}
+.info-message > a {
+  text-decoration: none;
+  color: #2e7c31;
+}

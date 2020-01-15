@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Book from '../shared/Book'
 import Loading from '../shared/Loading'
@@ -10,7 +11,9 @@ const BookShelf = ({ heading, books, shelfChangeHandler, loading }) => (
       {loading ? (
         <Loading />
       ) : books.length === 0 ? (
-        <p>No books in here</p>
+        <p className='info-message'>
+          No books in here. <Link to='/search'>Add books</Link>
+        </p>
       ) : (
         <ol className='books-grid'>
           {books.map(book => (
