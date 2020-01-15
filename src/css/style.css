@@ -1,7 +1,11 @@
 html,
-body,
-.root {
+body {
   height: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }
 
 body {
@@ -163,14 +167,19 @@ body {
 
 /* search page */
 
-.search-books-bar {
-  position: fixed;
+.search-books {
   width: 100%;
-  top: 0;
-  left: 0;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.search-books-bar {
+  width: 100%;
   z-index: 5;
   display: flex;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
+  flex-basis: 0;
 }
 
 .search-books-input-wrapper {
@@ -227,7 +236,12 @@ button:active {
 }
 
 .search-books-results {
-  padding: 80px 10px 20px;
+  padding: 20px 10px 20px;
+  flex-basis: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* loader */

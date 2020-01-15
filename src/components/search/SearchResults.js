@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Loading from '../shared/Loading'
 import Book from '../shared/Book'
 
 const SearchResults = ({
@@ -13,7 +14,7 @@ const SearchResults = ({
       {searchFieldEmpty ? (
         <p>Search for something</p>
       ) : loading ? (
-        <p>Fetching book details</p>
+        <Loading />
       ) : books.length === 0 ? (
         <p>No match found</p>
       ) : (
