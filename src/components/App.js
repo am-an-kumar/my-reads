@@ -19,27 +19,41 @@ class App extends Component {
   }
 
   // moves a book from one shelf to another(out of shelves)
-  shelfChangeHandler = (currentBook, newShelf) => {
-    this.setState(prevState => {
-      // if newShelf is "none", we simply need to remove the book, so not adding it to any shelf
-      const currentShelfState = prevState[currentBook.shelf].filter(
-        book => book.id !== currentBook.id,
-      )
-      if (newShelf === 'none') {
-        return {
-          [currentBook.shelf]: currentShelfState,
-        }
-      } else {
-        return {
-          [currentBook.shelf]: currentShelfState,
-          [newShelf]: prevState[newShelf].concat([
-            Object.assign(currentBook, { shelf: newShelf }),
-          ]),
-        }
-      }
-    })
-    // making AJAX request to update book data on server
-    update(currentBook.id, newShelf)
+  shelfChangeHandler = (currentBook, newBookShelf) => {
+    const currentBookShelf = currentBook.shelf || 'none'
+    const isCurrentBookShelfNone = currentBookShelf === 'none'
+    const isNewBookShelfNone = newBookShelf === 'none'
+
+    // book is being added from search page
+    if (isCurrentBookShelfNone) {
+      this.setState(prevState => ({
+        [newBookShelf]: prevState[newBookShelf].concat([
+          Object.assign(currentBook, { shelf: newBookShelf }),
+        ]),
+      }))
+    }
+    // book is being removed from shelf's from home page
+    else if (isNewBookShelfNone) {
+      this.setState(prevState => ({
+        [currentBookShelf]: prevState[currentBookShelf].filter(
+          book => book.id !== currentBook.id,
+        ),
+      }))
+    }
+    // book is transferred between 2 shelf's
+    else {
+      this.setState(prevState => ({
+        [currentBookShelf]: prevState[currentBookShelf].filter(
+          book => book.id !== currentBook.id,
+        ),
+        [newBookShelf]: prevState[newBookShelf].concat([
+          Object.assign(currentBook, { shelf: newBookShelf }),
+        ]),
+      }))
+    }
+
+    // making AJAX request to update changes on server
+    update(currentBook.id, newBookShelf)
   }
 
   // will be called on initial mount, not on re-renders
