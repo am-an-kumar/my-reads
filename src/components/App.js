@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 import Home from './home/Home'
 import Search from './search/Search'
-import { getAll } from '../utils/BooksAPI'
+import { getAll, update } from '../utils/BooksAPI'
 
 class App extends Component {
   state = {
@@ -38,6 +38,8 @@ class App extends Component {
         }
       }
     })
+    // making AJAX request to update book data on server
+    update(currentBook.id, newShelf)
   }
 
   // will be called on initial mount, not on re-renders
