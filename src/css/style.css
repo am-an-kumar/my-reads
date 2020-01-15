@@ -33,6 +33,18 @@ body {
   padding: 0 10px 20px;
 }
 
+.shelf-indicator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shelf-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+
 @media (min-width: 600px) {
   .bookshelf {
     padding: 0 20px 40px;
@@ -69,6 +81,7 @@ body {
 .book-title,
 .book-authors {
   font-size: 0.8em;
+  text-align: center;
 }
 
 .book-title {

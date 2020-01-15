@@ -1,6 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+// object to create color circle based on the shelf of book
+const colorEncoding = {
+  wantToRead: 'dodgerblue',
+  currentlyReading: 'yellow',
+  read: 'green',
+  none: 'red',
+}
+
 const Book = props => {
   const { book, shelfChangeHandler } = props
   const { title, authors, imageLinks, shelf } = book
@@ -40,7 +48,16 @@ const Book = props => {
         <div className='book-authors'>
           {authors ? authors.join(', ') : 'Author Unknown'}
         </div>
-        <div>{shelf}</div>
+        <div className='shelf-indicator-container'>
+          <span
+            className='shelf-indicator'
+            style={{
+              backgroundColor: shelf
+                ? colorEncoding[shelf]
+                : colorEncoding['none'],
+            }}
+          ></span>
+        </div>
       </div>
     </li>
   )
