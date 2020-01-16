@@ -278,3 +278,9 @@ button:active {
   text-decoration: none;
   color: #2e7c31;
 }
+
+/* toast */
+.toast-class {
+  max-width: 80%;
+  margin: 0 5px 5px auto;
+}

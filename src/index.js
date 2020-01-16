@@ -1,5 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 import App from './components/App'
 import '@babel/polyfill'
 import './css/style.css'
@@ -11,4 +14,14 @@ if (process.env.NODE_ENV === 'development') {
   axe(React, ReactDOM, 1000)
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <Router>
+    <App />
+    <ToastContainer
+      draggablePercent={60}
+      autoClose={4000}
+      position={'bottom-right'}
+    />
+  </Router>,
+  document.getElementById('root'),
+)

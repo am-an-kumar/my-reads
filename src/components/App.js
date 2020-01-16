@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Home from './home/Home'
 import Search from './search/Search'
 import { getAll, update } from '../utils/BooksAPI'
+import { toast } from 'react-toastify'
 
 class App extends Component {
   state = {
@@ -54,6 +50,21 @@ class App extends Component {
 
     // making AJAX request to update changes on server
     update(currentBook.id, newBookShelf)
+
+    // notifiying user
+    if (currentBookShelf === 'none') {
+      toast.success('Book added to self', {
+        className: 'toast-class',
+      })
+    } else if (newBookShelf === 'none') {
+      toast.success('Book removed from shelf', {
+        className: 'toast-class',
+      })
+    } else {
+      toast.success('Book moved', {
+        className: 'toast-class',
+      })
+    }
   }
 
   // will be called on initial mount, not on re-renders
@@ -86,7 +97,7 @@ class App extends Component {
     const { currentlyReading, read, wantToRead, loading } = this.state
 
     return (
-      <Router basename='/'>
+      <>
         <Switch>
           <Route
             exact
@@ -109,7 +120,7 @@ class App extends Component {
           />
           <Redirect to='/' />
         </Switch>
-      </Router>
+      </>
     )
   }
 }
