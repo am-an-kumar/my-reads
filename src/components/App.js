@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Home from './home/Home'
 import Search from './search/Search'
+import BookDetails from './shared/BookDetails'
 import { getAll, update } from '../utils/BooksAPI'
 import { toast } from 'react-toastify'
 
@@ -118,6 +119,7 @@ class App extends Component {
               <Search shelfChangeHandler={this.shelfChangeHandler} />
             )}
           />
+          <Route path='/book' component={BookDetails} />
           <Redirect to='/' />
         </Switch>
       </>
