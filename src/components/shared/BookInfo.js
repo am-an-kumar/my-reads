@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import BookInfoComponent from './BookInfoComponent'
 
 const BookInfo = ({
   title,
@@ -16,15 +17,7 @@ const BookInfo = ({
 }) => {
   return (
     <div id='book-info'>
-      <div
-        className='book-basic-info'
-        style={{
-          display: 'flex',
-          flexFlow: 'column nowrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      <div id='book-basic-info'>
         <div
           className='book-cover'
           style={{
@@ -40,17 +33,32 @@ const BookInfo = ({
           {authors ? authors.join(', ') : 'Author Details Unavailable'}
         </div>
       </div>
-      <div className='book-detailed-info'>
-        <div className='book-authors'>
-          {categories ? categories.join(', ') : 'Category Details Unavailable'}
-        </div>
-        <div>{description}</div>
-        <div>{publisher}</div>
-        <div>{pageCount}</div>
-        <div>{publishedDate}</div>
-        <div>{language}</div>
-        <div>{previewLink}</div>
-        <div>{infoLink}</div>
+      <div id='book-detailed-info'>
+        {categories && (
+          <BookInfoComponent
+            heading='categories'
+            value={categories.join(', ')}
+          />
+        )}
+        {description && (
+          <BookInfoComponent heading='description' value={description} />
+        )}
+        {publisher && (
+          <BookInfoComponent heading='publisher' value={publisher} />
+        )}
+        {publishedDate && (
+          <BookInfoComponent heading='published date' value={publishedDate} />
+        )}
+        {language && <BookInfoComponent heading='language' value={language} />}
+        {pageCount && (
+          <BookInfoComponent heading='page count' value={pageCount} />
+        )}
+        <a target={'_blank'} href={infoLink} className='relevant-links'>
+          Click for info
+        </a>
+        <a target={'_blank'} href={previewLink} className='relevant-links'>
+          Click for preview
+        </a>
       </div>
     </div>
   )
@@ -61,7 +69,13 @@ BookInfo.propTypes = {
   authors: PropTypes.array,
   categories: PropTypes.array,
   imageLinks: PropTypes.object,
+  language: PropTypes.string,
+  infoLink: PropTypes.string,
+  previewLink: PropTypes.string,
+  publisher: PropTypes.string,
+  publishedDate: PropTypes.string,
   description: PropTypes.string,
+  pageCount: PropTypes.number,
 }
 
 export default BookInfo
