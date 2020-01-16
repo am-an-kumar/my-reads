@@ -46,7 +46,7 @@ const Book = props => {
         </div>
         <div className='book-title'>{title}</div>
         <div className='book-authors'>
-          {authors ? authors.join(', ') : 'Author Unknown'}
+          {authors ? authors.join(', ') : 'Author Details Unavailable'}
         </div>
         <div className='shelf-indicator-container'>
           <span
