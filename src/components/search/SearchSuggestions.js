@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const SearchSuggestions = ({ filteredKeywords, onSelectChangeHandler }) => (
   <select
-    value=''
+    defaultValue=''
     size={10}
     className='keyword-dropdown'
     onChange={event => onSelectChangeHandler(event.target.value)}
