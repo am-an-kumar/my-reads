@@ -17,7 +17,7 @@ const Book = props => {
   return (
     <li>
       <div className='book'>
-        <div className='book-top'>
+        <div className='book-top book-link'>
           <Link to={`/book?id=${book.id}`}>
             <div
               className='book-cover'
