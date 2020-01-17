@@ -97,14 +97,21 @@ class Search extends Component {
   clearHandler = () => {
     this.setState({
       searchFieldValue: '',
+      filteredKeywords: [],
       books: [],
       loading: false,
     })
   }
 
-  inputChangeHandler = event => {
+  // handler for select for typeahead field
+  selectChangeHandler = value => {
+    console.log(value)
+    this.inputChangeHandler(value, true)
+  }
+
+  // handler for textbox
+  inputChangeHandler = (value, closeDropdown = false) => {
     // getting the value, triming spaces from start if any, and replacing multiple spaces with a single space
-    let value = event.target.value
     value = value.trimStart()
     value = value.replace(/  +/g, ' ')
 
@@ -113,9 +120,11 @@ class Search extends Component {
       return {
         searchFieldValue: value,
         loading: true,
-        filteredKeywords: prevState.keywords.filter(keyword =>
-          keyword.includes(value.toLowerCase()),
-        ),
+        filteredKeywords: closeDropdown
+          ? []
+          : prevState.keywords.filter(keyword =>
+              keyword.includes(value.toLowerCase()),
+            ),
       }
     })
 
@@ -147,6 +156,7 @@ class Search extends Component {
         <SearchForm
           value={searchFieldValue}
           onChangeHandler={this.inputChangeHandler}
+          onSelectChangeHandler={this.selectChangeHandler}
           clearHandler={this.clearHandler}
           filteredKeywords={filteredKeywords}
         />
