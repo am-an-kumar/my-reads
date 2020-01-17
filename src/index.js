@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.min.css'
 import App from './components/App'
 import '@babel/polyfill'
 import './css/style.css'
+import ErrorBoundary from './components/ErrorBoundary'
 
 // react-axe will run only in dev mode
 if (process.env.NODE_ENV === 'development') {
@@ -16,12 +17,14 @@ if (process.env.NODE_ENV === 'development') {
 
 ReactDOM.render(
   <Router>
-    <App />
-    <ToastContainer
-      draggablePercent={60}
-      autoClose={4000}
-      position={'bottom-right'}
-    />
+    <ErrorBoundary>
+      <App />
+      <ToastContainer
+        draggablePercent={60}
+        autoClose={4000}
+        position={'bottom-right'}
+      />
+    </ErrorBoundary>
   </Router>,
   document.getElementById('root'),
 )
