@@ -5,6 +5,7 @@ import SearchSuggestions from './SearchSuggestions'
 
 const SearchForm = ({
   onChangeHandler,
+  onKeyPressHandler,
   onSelectChangeHandler,
   value,
   clearHandler,
@@ -21,6 +22,7 @@ const SearchForm = ({
           placeholder='Search by title or author'
           onChange={event => onChangeHandler(event.target.value)}
           value={value}
+          onKeyDown={onKeyPressHandler}
         />
       </div>
       <button className='clear-search' onClick={clearHandler}>
@@ -38,6 +40,7 @@ const SearchForm = ({
 
 SearchForm.propTypes = {
   onChangeHandler: PropTypes.func.isRequired,
+  onKeyPressHandler: PropTypes.func.isRequired,
   onSelectChangeHandler: PropTypes.func.isRequired,
   clearHandler: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,

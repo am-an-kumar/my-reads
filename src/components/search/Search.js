@@ -105,8 +105,15 @@ class Search extends Component {
 
   // handler for select for typeahead field
   selectChangeHandler = value => {
-    console.log(value)
     this.inputChangeHandler(value, true)
+  }
+
+  inputKeyPressHandler = ({ keyCode }) => {
+    if (keyCode === 27 || keyCode === 13) {
+      this.setState({
+        filteredKeywords: [],
+      })
+    }
   }
 
   // handler for textbox
@@ -156,6 +163,7 @@ class Search extends Component {
         <SearchForm
           value={searchFieldValue}
           onChangeHandler={this.inputChangeHandler}
+          onKeyPressHandler={this.inputKeyPressHandler}
           onSelectChangeHandler={this.selectChangeHandler}
           clearHandler={this.clearHandler}
           filteredKeywords={filteredKeywords}
