@@ -9,6 +9,88 @@ class Search extends Component {
     searchFieldValue: '',
     books: [],
     loading: false,
+    keywords: [
+      'android',
+      'art',
+      'artificial intelligence',
+      'astronomy',
+      'austen',
+      'baseball',
+      'basketball',
+      'bhagat',
+      'biography',
+      'brief',
+      'business',
+      'camus',
+      'cervantes',
+      'christie',
+      'classics',
+      'comics',
+      'cook',
+      'cricket',
+      'cycling',
+      'desai',
+      'design',
+      'development',
+      'digital marketing',
+      'drama',
+      'drawing',
+      'dumas',
+      'education',
+      'everything',
+      'fantasy',
+      'film',
+      'finance',
+      'first',
+      'fitness',
+      'football',
+      'future',
+      'games',
+      'gandhi',
+      'homer',
+      'horror',
+      'hugo',
+      'ibsen',
+      'journey',
+      'kafka',
+      'king',
+      'lahiri',
+      'larsson',
+      'learn',
+      'literary fiction',
+      'make',
+      'manage',
+      'marquez',
+      'money',
+      'mystery',
+      'negotiate',
+      'painting',
+      'philosophy',
+      'photography',
+      'poetry',
+      'production',
+      'programming',
+      'react',
+      'redux',
+      'river',
+      'robotics',
+      'rowling',
+      'satire',
+      'science fiction',
+      'shakespeare',
+      'singh',
+      'swimming',
+      'tale',
+      'thrun',
+      'time',
+      'tolstoy',
+      'travel',
+      'ultimate',
+      'virtual reality',
+      'web development',
+      'ios',
+    ],
+    filteredKeywords: [],
   }
 
   // handler for clear button in search form
@@ -27,9 +109,14 @@ class Search extends Component {
     value = value.replace(/  +/g, ' ')
 
     // setting state to update the input field, can't wait for AJAX response before updating the input field
-    this.setState({
-      searchFieldValue: value,
-      loading: true,
+    this.setState(prevState => {
+      return {
+        searchFieldValue: value,
+        loading: true,
+        filteredKeywords: prevState.keywords.filter(keyword =>
+          keyword.includes(value.toLowerCase()),
+        ),
+      }
     })
 
     // making AJAX request to fetch book
@@ -52,7 +139,7 @@ class Search extends Component {
   }
 
   render() {
-    const { searchFieldValue, books, loading } = this.state
+    const { searchFieldValue, books, loading, filteredKeywords } = this.state
     const { shelfChangeHandler } = this.props
 
     return (
@@ -61,6 +148,7 @@ class Search extends Component {
           value={searchFieldValue}
           onChangeHandler={this.inputChangeHandler}
           clearHandler={this.clearHandler}
+          filteredKeywords={filteredKeywords}
         />
         <SearchResults
           books={books}
