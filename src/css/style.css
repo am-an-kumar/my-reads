@@ -308,7 +308,7 @@ button:active {
 
 #book-basic-info {
   margin-right: 30px;
-  margin-left: 10px;
+  margin-left: 20px;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -317,6 +317,7 @@ button:active {
   display: flex;
   flex-flow: column nowrap;
   margin-right: 10px;
+  margin-left: 20px;
 }
 
 #book-detailed-info > div {
@@ -338,4 +339,18 @@ button:active {
   font-style: italic;
   text-decoration: none;
   color: #2e7c31;
+}
+
+@media (max-width: 600px) {
+  #book-info {
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #book-basic-info {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 }
