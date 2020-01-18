@@ -18,6 +18,7 @@ class SearchSuggestions extends Component {
         size={10}
         className='keyword-dropdown'
         onChange={event => onSelectChangeHandler(event.target.value)}
+        onClick={event => onSelectChangeHandler('')}
       >
         {filteredKeywords.map(keyword => (
           <option key={keyword} value={keyword}>
