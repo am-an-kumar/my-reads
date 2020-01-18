@@ -11,7 +11,7 @@ const SearchForm = ({
   clearHandler,
   filteredKeywords,
 }) => (
-  <div id='form-wrapper'>
+  <header id='form-wrapper'>
     <div className='search-books-bar'>
       <Link to='/'>
         <button className='close-search'>Close</button>
@@ -23,6 +23,7 @@ const SearchForm = ({
           onChange={event => onChangeHandler(event.target.value)}
           value={value}
           onKeyDown={onKeyPressHandler}
+          aria-label='Enter keyword to search'
         />
       </div>
       <button className='clear-search' onClick={clearHandler}>
@@ -35,7 +36,7 @@ const SearchForm = ({
         onSelectChangeHandler={onSelectChangeHandler}
       />
     )}
-  </div>
+  </header>
 )
 
 SearchForm.propTypes = {

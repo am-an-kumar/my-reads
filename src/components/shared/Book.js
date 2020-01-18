@@ -18,7 +18,10 @@ const Book = props => {
     <li>
       <div className='book'>
         <div className='book-top book-link'>
-          <Link to={`/book?id=${book.id}`}>
+          <Link
+            to={`/book?id=${book.id}`}
+            aria-label='Get more info on ${book.title}'
+          >
             <div
               className='book-cover'
               style={{
@@ -37,6 +40,7 @@ const Book = props => {
             <select
               onChange={event => shelfChangeHandler(book, event.target.value)}
               value={shelf || 'none'}
+              aria-label='Choose self to move book to'
             >
               <option value='move' disabled>
                 Move to...

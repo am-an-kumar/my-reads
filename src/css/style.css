@@ -103,7 +103,7 @@ body {
 }
 
 .book-authors {
-  color: #999;
+  color: rgb(93, 89, 89);
 }
 
 .book-top {
@@ -336,7 +336,7 @@ button:active {
 }
 
 #book-detailed-info > div {
-  color: #999;
+  color: rgb(93, 89, 89);
   font-size: 1em;
   text-align: left;
 }

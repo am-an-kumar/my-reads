@@ -19,6 +19,7 @@ class SearchSuggestions extends Component {
         className='keyword-dropdown'
         onChange={event => onSelectChangeHandler(event.target.value)}
         onClick={event => onSelectChangeHandler('')}
+        aria-label='Choose keyword to search books'
       >
         {filteredKeywords.map(keyword => (
           <option key={keyword} value={keyword}>

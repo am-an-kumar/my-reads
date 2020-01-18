@@ -11,7 +11,7 @@ const Home = ({
   shelfChangeHandler,
   loading,
 }) => (
-  <div className='list-books'>
+  <main className='list-books'>
     <Header />
     <BookStore
       read={read}
@@ -21,7 +21,7 @@ const Home = ({
       loading={loading}
     />
     <AddBooksButton />
-  </div>
+  </main>
 )
 
 Home.propTypes = {
