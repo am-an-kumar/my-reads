@@ -125,7 +125,7 @@ class Search extends Component {
     // setting state to update the input field, can't wait for AJAX response before updating the input field
     this.setState(prevState => {
       return {
-        searchFieldValue: value,
+        searchFieldValue: value ? value : prevState.value,
         loading: true,
         filteredKeywords: closeDropdown
           ? []
