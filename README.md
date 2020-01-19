@@ -1,43 +1,52 @@
-# React Boilerplate
+
+# My Reads
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-
-- [Overview](#overview)
-
+- [Instructions](#instructions)
+	- [Demo](#demo)
+	- [Setting Up Locally](#setting-up-locally)
+	- [Features](#features)
 - [Dependencies](#dependencies)
-- [Getting Started](#getting_started)
-
 - [Contributing](#contributing)
+	- [Known Bugs](#known-bugs)
+	- [Features To Add](#features-to-add)
 
-## Introduction
+## Instructions
+My Reads is an application that lets you manage the books you are reading, or want to read or have already read.
 
-This is a basic react boilerplate setup. It is good for use when you are getting started, or are creating something for yourself and want more control on config and want to see how it all works. But for production, use something more standard like [create-react-app](https://www.npmjs.com/package/create-react-app)
+### Demo
+To see a demo, click [here](https://am-an-kumar.github.io/my-reads/)
 
-## Overview
+### Setting Up Locally
+Follow these steps to run the project locally
 
-Following npm scripts are configured:
+- clone this repo and install the dependencies
+- start the frontend server by running - npm run dev or npm run dev:hot
 
-- dev - starts a local development server
-- dev:hot - starts a local development server and enables hot reload. Useful when you don't want to loose state due to full page refresh on making changes
-- build - creates a dist folder for deployment. By default, following files are present: - index.html - has base markup - app_bundle.js - generated bundle. Won't contain react or react-dom code, cause the config will put the cdn links for these in index.html - report.html - html report on contribution of different packages on overall bundle size
-  If your codebase has code-splitting, multiple bundles will be generated
-- format - formats the codebase. Uses prettier for it. To adjust formatting styles according to you, edit .prettierrc
-- lint - checks codebase for linting errors. Uses eslint for it. To adjust, edit .eslintrc.json
-- deploy - useful if you want to deploy to github static pages. Can be used to host web apps without any backend. To deploy: - Make sure that package.json has homepage set to your remote repo url - Execute npm run build - Execute npm run deploy
-- test - echoes "Error: no test specified" and exits. Modify it to run test script
+### Features
+- Keep books in 3 separate shelves, namely:
+	- currently reading
+	- want to read
+	- read
+- Search for books and add them to any of the above shelves.
+- Remembers your book shelves without you having to login or sign up.
+- Provides a type ahead field while searching for books.
+- On clicking a book, you get to see the detailed information about it.
+- Notifications when an action is complete.
 
 ## Dependencies
 
-Check package.json for details. Only basic dependencies are added. For dev dependencies, most of the things are covered. Add the ones you need
-
-## Getting_Started
-
-- Edit src/components to develop an application
-- Edit src/css/ to style an application
-- While making commits, by default formatting and linting checks will be run and on any error, a commit won't succeed. There are few ways around it: - Edit .prettierrc and .eslintrc.json according to your development style - Bypass it by executing 'git commit --message "your message" --no-verify' - Remove pre-commit hook for husky from package.json
+This project mainly uses:
+- react
+- react-router
+Check the package.json for the full list. You can take a look at the [boilerplate setup](https://github.com/am-an-kumar/react-boilerplate) that i used for this project.
 
 ## Contributing
+### Known Bugs
+- On opening the [demo link](https://am-an-kumar.github.io/my-reads/), the browser redirects to (https://am-an-kumar.github.io). Which is fine until you refresh the page. The issue is concerned with react router. For production, it is taking '/' as https://am-an-kumar.github.io/.
 
-I built this project just to get familiar with the way in which React tooling works. The project is complete with all desired functionalities and there are no known bugs. There can always be new features like using loaders to convert images to .webp and so on. Add those if you need it. Feel free to use it.
+### Features To Add
+- On the search page, there should be a way to know if a book is already in any of the shelves of a user.
+
+Apart from these,  project is pretty much complete. Feel free to use it in what ever way you need. In case you can spot any other bug, please create a pull request. Follow the standard coding practices if you feel like creating a pull request.
