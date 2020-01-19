@@ -36,7 +36,8 @@ This project mainly uses:
 
 - react
 - react-router
-  Check the package.json for the full list. You can take a look at the [boilerplate setup](https://github.com/am-an-kumar/react-boilerplate) that i used for this project.
+
+Check the package.json for the full list. You can take a look at the [boilerplate setup](https://github.com/am-an-kumar/react-boilerplate) that i used for this project.
 
 ## Contributing
 
