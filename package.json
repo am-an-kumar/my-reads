@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "my-reads",
   "version": "0.1.0",
-  "description": "Boilerplate setup for react projects",
+  "description": "App to search for books and maintain books based on shelf like read books, want to read books and currently reading books",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,9 +13,11 @@
     "deploy": "gh-pages -d dist"
   },
   "keywords": [
-    "react-boilerplate",
-    "create-react-app",
-    "react setup"
+    "react",
+    "my-reads",
+    "my reads",
+    "book",
+    "shelf"
   ],
   "author": "Aman Kumar",
   "license": "ISC",
@@ -63,10 +65,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aman-kumar-edith/react-boilerplate.git"
+    "url": "git+https://github.com/am-an-kumar/my-reads.git"
   },
   "bugs": {
-    "url": "https://github.com/aman-kumar-edith/react-boilerplate/issues"
+    "url": "https://github.com/am-an-kumar/my-reads/issues"
   },
-  "homepage": "https://github.com/aman-kumar-edith/react-boilerplate#readme"
+  "homepage": "https://am-an-kumar.github.io//my-reads"
 }
