@@ -156,7 +156,7 @@ class Search extends Component {
 
   render() {
     const { searchFieldValue, books, loading, filteredKeywords } = this.state
-    const { shelfChangeHandler } = this.props
+    const { shelfChangeHandler, shelfBooks } = this.props
 
     return (
       <div className='search-books'>
@@ -169,6 +169,7 @@ class Search extends Component {
           filteredKeywords={filteredKeywords}
         />
         <SearchResults
+          shelfBooks={shelfBooks}
           books={books}
           searchFieldEmpty={searchFieldValue ? false : true}
           loading={loading}
@@ -181,6 +182,7 @@ class Search extends Component {
 
 Search.propTypes = {
   shelfChangeHandler: PropTypes.func.isRequired,
+  shelfBooks: PropTypes.array.isRequired,
 }
 
 export default Search

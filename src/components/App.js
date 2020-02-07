@@ -116,7 +116,10 @@ class App extends Component {
           <Route
             path='/search'
             render={() => (
-              <Search shelfChangeHandler={this.shelfChangeHandler} />
+              <Search
+                shelfChangeHandler={this.shelfChangeHandler}
+                shelfBooks={[...currentlyReading, ...read, ...wantToRead]}
+              />
             )}
           />
           <Route path='/book' component={BookDetails} />

@@ -4,11 +4,22 @@ import Loading from '../shared/Loading'
 import Book from '../shared/Book'
 
 const SearchResults = ({
+  shelfBooks,
   books,
   searchFieldEmpty,
   loading,
   shelfChangeHandler,
 }) => {
+  const updatedBooks = books.map(book => {
+    shelfBooks.map(b => {
+      if (b.id === book.id) {
+        book.shelf = b.shelf
+      }
+      return b
+    })
+    return book
+  })
+
   return (
     <div className='search-books-results'>
       {searchFieldEmpty ? (
@@ -19,7 +30,7 @@ const SearchResults = ({
         <p className='info-message'>No match found</p>
       ) : (
         <ol className='books-grid'>
-          {books.map(book => (
+          {updatedBooks.map(book => (
             <Book
               key={book.id}
               book={book}
@@ -33,6 +44,7 @@ const SearchResults = ({
 }
 
 SearchResults.propTypes = {
+  shelfBooks: PropTypes.array.isRequired,
   books: PropTypes.array.isRequired,
   searchFieldEmpty: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
