@@ -2,14 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class SearchSuggestions extends Component {
-  componentDidMount() {
-    document.body.style.overflowY = 'hidden'
-  }
-
-  componentWillMount() {
-    document.body.style.overflowY = 'unset'
-  }
-
   render() {
     const { filteredKeywords, onSelectChangeHandler } = this.props
     return (
@@ -17,8 +9,8 @@ class SearchSuggestions extends Component {
         defaultValue=''
         size={10}
         className='keyword-dropdown'
-        onChange={event => onSelectChangeHandler(event.target.value)}
-        onClick={event => onSelectChangeHandler('')}
+        onClick={event => onSelectChangeHandler(event.target.value)}
+        onBlur={event => onSelectChangeHandler(event.target.value)}
         aria-label='Choose keyword to search books'
       >
         {filteredKeywords.map(keyword => (
